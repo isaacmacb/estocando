@@ -20,12 +20,15 @@ public class StockMovement {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private MovementType type;
+    private MovementType type; // ENTRADA / SAIDA
 
-    private Integer integer;
+    private Integer quantity;
 
     @ManyToOne
     private Product product;
+
+    @ManyToOne
+    private Tenant tenant;
 
     private LocalDateTime createdAt;
 
