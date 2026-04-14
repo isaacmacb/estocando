@@ -1,0 +1,11 @@
+package com.api.estoque.repository;
+
+import com.api.estoque.entity.Supplier;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface SupplierRepository extends JpaRepository<Supplier, Long> {
+    List<Supplier> findByTenantId(Long tenantId);
+
+}
