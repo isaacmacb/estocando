@@ -13,29 +13,26 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class) // isso ativa o Mockito no test, permitindo usar inject e mock
+@ExtendWith(MockitoExtension.class)
 class ProductServiceTest {
 
-    @InjectMocks // Cria a classe real e injeta os mocks nela
+    @InjectMocks
     private ProductService productService;
 
-    @Mock // Cria uma versão falsa da classe abaixo
+    @Mock
     private ProductRepository productRepository;
 
-    @Test // Marca o metodo abaixo como teste
+    @Test
     void deveCriarProduto() {
         Product product = new Product();
         product.setName("Teste");
 
-        when(productRepository.save(any())).thenReturn(product); // when define o comportamento do mock
-        // any permite aceitar qualquer valor
-        // theReturn define o que será retornado
-
+        when(productRepository.save(any())).thenReturn(product);
         Product result = productService.create(product);
 
-        assertNotNull(result); // verifica se há nulos, não pode estar vazio
-        assertEquals("Teste", result.getName()); // verificar se os valores são iguais
+        assertNotNull(result);
+        assertEquals("Teste", result.getName());
 
-        verify(productRepository).save(product); // verify verifica se o metodo foi chamado corretamente
+        verify(productRepository).save(product);
     }
 }

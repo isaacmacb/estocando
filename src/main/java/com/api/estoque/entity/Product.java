@@ -23,8 +23,7 @@ public class Product {
     private boolean active = true;
 
     @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne
-    private Tenant tenant;
 }
